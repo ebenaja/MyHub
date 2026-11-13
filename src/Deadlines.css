@@ -1,0 +1,105 @@
+.deadlines-page {
+  padding: 38px 48px 48px;
+  min-height: calc(100vh - 120px);
+}
+.deadlines-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.deadlines-heading h1 {
+  margin: 12px 0 8px;
+  color: var(--text-primary, #edf2ff);
+  font-size: clamp(34px, 4vw, 46px);
+  letter-spacing: -1.8px;
+}
+.deadlines-heading h1 span { color: #5b7cff; }
+.deadlines-heading p { margin: 0; color: #8fa2c5; font-size: 15px; }
+.deadlines-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 26px;
+}
+.deadlines-stat-card {
+  min-height: 126px;
+  padding: 22px 24px;
+  border: 1px solid #263653;
+  border-radius: 20px;
+  background: #121d32;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.deadlines-stat-card span { color: #91a4c7; font-size: 13px; font-weight: 600; }
+.deadlines-stat-card strong { color: #f3f6ff; font-size: 34px; line-height: 1.1; }
+.deadlines-stat-card small { color: #8195b9; font-size: 12px; }
+.deadlines-manager-panel { padding: 26px 28px; }
+.deadlines-manager-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.deadlines-manager-header h3 { margin: 0 0 6px; color: #edf2ff; font-size: 19px; }
+.deadlines-manager-header p { margin: 0; color: #8fa2c5; font-size: 13px; }
+.deadline-manager-list { display: flex; flex-direction: column; }
+.deadline-manager-row {
+  display: grid;
+  grid-template-columns: 34px 105px minmax(140px, 1fr) 82px 125px 86px;
+  align-items: center;
+  gap: 13px;
+  padding: 17px 0;
+  border-top: 1px solid #263653;
+}
+.deadline-status-check {
+  width: 25px; height: 25px; border: 1px solid #667895; border-radius: 8px;
+  background: transparent; color: white; display: grid; place-items: center; cursor: pointer;
+}
+.deadline-status-check.checked { background: #10a77d; border-color: #10a77d; }
+.deadline-manager-date { display: flex; align-items: center; gap: 8px; color: #9bb0d4; font-size: 12px; }
+.deadline-manager-date svg { color: #7291ff; }
+.deadline-manager-copy { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.deadline-manager-copy strong { color: #edf2ff; font-size: 13px; }
+.deadline-manager-copy span { color: #8fa2c5; font-size: 11px; overflow-wrap: anywhere; }
+.deadline-priority { justify-self: start; border-radius: 20px; padding: 5px 9px; font-size: 10px; font-weight: 700; text-transform: capitalize; }
+.deadline-priority.priority-low { color: #64d7b4; background: #143b37; }
+.deadline-priority.priority-medium { color: #e9c16d; background: #3b3320; }
+.deadline-priority.priority-high { color: #ff9ca5; background: #422832; }
+.deadline-status-label { color: #8fa2c5; font-size: 11px; }
+.deadline-status-label.overdue { color: #ff8b94; }
+.deadline-status-label.completed { color: #55d5ae; }
+.deadline-manager-row.is-completed .deadline-manager-copy strong { text-decoration: line-through; opacity: .65; }
+.deadline-manager-actions { display: flex; justify-content: flex-end; gap: 7px; }
+.deadline-empty { min-height: 240px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: #8fa2c5; text-align: center; }
+.deadline-empty strong { color: #edf2ff; font-size: 16px; }
+.deadline-empty p { max-width: 420px; margin: 0 0 6px; font-size: 13px; line-height: 1.6; }
+.deadline-error { color: #ff9ca5; font-size: 12px; margin: 0 0 14px; }
+.deadline-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+.deadline-modal label { display: block; margin: 12px 0 7px; color: #93a6c8; font-size: 12px; font-weight: 600; }
+.deadline-modal input, .deadline-modal select, .deadline-modal textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid #34415d; border-radius: 9px;
+  padding: 11px 12px; background: #111b30; color: #edf2ff; font: inherit; font-size: 13px; outline: none;
+}
+.deadline-modal textarea { resize: vertical; }
+.deadline-modal input:focus, .deadline-modal select:focus, .deadline-modal textarea:focus { border-color: #6485ff; }
+.app-shell.light .deadlines-stat-card { background: #fff; border-color: #e1e7f1; }
+.app-shell.light .deadlines-stat-card strong, .app-shell.light .deadlines-manager-header h3, .app-shell.light .deadline-manager-copy strong, .app-shell.light .deadline-empty strong { color: #1d2a43; }
+.app-shell.light .deadline-manager-row { border-color: #e7ebf2; }
+.app-shell.light .deadline-modal input, .app-shell.light .deadline-modal select, .app-shell.light .deadline-modal textarea { background: white; color: #273550; border-color: #dfe5f0; }
+@media (max-width: 1100px) {
+  .deadlines-page { padding: 28px; }
+  .deadlines-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .deadline-manager-row { grid-template-columns: 30px 90px minmax(120px, 1fr) 70px 95px 80px; gap: 8px; }
+}
+@media (max-width: 760px) {
+  .deadlines-page { padding: 24px 18px 32px; }
+  .deadlines-heading { align-items: flex-start; flex-direction: column; }
+  .deadlines-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .deadlines-stat-card { padding: 16px; }
+  .deadlines-manager-panel { padding: 17px; }
+  .deadline-manager-row { grid-template-columns: 28px 1fr 70px; }
+  .deadline-manager-date { grid-column: 2; grid-row: 1; }
+  .deadline-manager-copy { grid-column: 2 / 4; grid-row: 2; }
+  .deadline-priority { grid-column: 1 / 2; grid-row: 2; }
+  .deadline-status-label { grid-column: 2; grid-row: 3; }
+  .deadline-manager-actions { grid-column: 3; grid-row: 1; }
+  .deadline-form-grid { grid-template-columns: 1fr; }
+}

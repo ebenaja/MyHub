@@ -1,0 +1,260 @@
+/* MyHub layout and light-theme correction patch */
+/* Desktop app frame: keep the shell inside the WebView and scroll only the content pane. */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #edf2fb;
+}
+
+#root {
+  height: 100vh;
+  min-height: 0;
+}
+
+.app-shell {
+  width: 100%;
+  height: 100vh;
+  min-height: 0 !important;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.sidebar {
+  height: 100%;
+  min-height: 0;
+  flex: 0 0 258px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1 1 0%;
+  width: 0;
+  height: 100%;
+  min-height: 0 !important;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  background: transparent;
+}
+
+.main-content > .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  flex: 0 0 auto;
+}
+
+.main-content::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  width: 9px;
+}
+
+.main-content::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 20px;
+  background: rgba(116, 139, 190, .35);
+  background-clip: padding-box;
+}
+
+/* Ensure page headings have breathing room below the sticky top bar. */
+.mydaily-page,
+.deadlines-page,
+.personal-page,
+.calendar-page,
+.spendnote-page {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 36px;
+}
+
+.mydaily-heading {
+  min-height: 112px;
+  align-items: center;
+  padding-top: 3px;
+}
+
+.mydaily-heading h1 {
+  line-height: 1.18;
+  padding-bottom: 2px;
+}
+
+/* Light theme: eliminate the accidental white-to-charcoal gradients on summary cards. */
+.app-shell.light .personal-summary-card:not(.accent-card) {
+  color: #1d2b47;
+  border-color: #dfe6f4;
+  background: linear-gradient(145deg, #ffffff 0%, #f6f8ff 100%);
+  box-shadow: 0 12px 28px rgba(45, 68, 116, .07);
+}
+
+.app-shell.light .personal-summary-card:nth-child(2):not(.accent-card) {
+  background: linear-gradient(145deg, #ffffff 0%, #eef2ff 100%);
+}
+
+.app-shell.light .personal-summary-card:nth-child(3):not(.accent-card) {
+  background: linear-gradient(145deg, #ffffff 0%, #eefaf7 100%);
+}
+
+.app-shell.light .personal-summary-card:nth-child(4):not(.accent-card) {
+  background: linear-gradient(145deg, #ffffff 0%, #fff5eb 100%);
+}
+
+.app-shell.light .personal-summary-card:not(.accent-card) > span,
+.app-shell.light .personal-summary-card:not(.accent-card) > small {
+  color: #687895;
+}
+
+.app-shell.light .personal-summary-card:not(.accent-card) > strong {
+  color: #1b2944;
+}
+
+.app-shell.light .personal-summary-card:not(.accent-card) > svg {
+  color: #5377e6;
+  opacity: .82;
+}
+
+/* MyDaily: clearer hierarchy and subtle color coding in light mode. */
+.app-shell.light .mydaily-stat-card {
+  position: relative;
+  overflow: hidden;
+  border-color: #dfe6f4;
+  background: linear-gradient(145deg, #ffffff 0%, #f7f9ff 100%);
+  box-shadow: 0 12px 28px rgba(45, 68, 116, .065);
+}
+
+.app-shell.light .mydaily-stat-card::before {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 3px;
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(90deg, #6d91fa, #9a83ed);
+  content: "";
+  opacity: .82;
+}
+
+.app-shell.light .mydaily-stat-card:nth-child(2) {
+  background: linear-gradient(145deg, #ffffff 0%, #f0f4ff 100%);
+}
+
+.app-shell.light .mydaily-stat-card:nth-child(3) {
+  background: linear-gradient(145deg, #ffffff 0%, #effaf6 100%);
+}
+
+.app-shell.light .mydaily-stat-card:nth-child(4) {
+  background: linear-gradient(145deg, #ffffff 0%, #f6f1ff 100%);
+}
+
+.app-shell.light .mydaily-stat-card span,
+.app-shell.light .mydaily-stat-card small,
+.app-shell.light .mydaily-list-heading p {
+  color: #71809c;
+}
+
+.app-shell.light .mydaily-stat-card strong,
+.app-shell.light .mydaily-list-heading h3,
+.app-shell.light .mydaily-task-copy > strong {
+  color: #1d2b47;
+}
+
+.app-shell.light .mydaily-list-panel,
+.app-shell.light .file-library-panel,
+.app-shell.light .personal-toolbar,
+.app-shell.light .settings-main-panel,
+.app-shell.light .settings-info-card {
+  border-color: #e0e7f3;
+  background: linear-gradient(145deg, #ffffff 0%, #fbfcff 100%);
+  box-shadow: 0 14px 35px rgba(42, 66, 116, .055);
+}
+
+.app-shell.light .personal-empty,
+.app-shell.light .mydaily-empty {
+  color: #71809c;
+}
+
+/* Give summary and content panels a clear hover/focus response without excessive motion. */
+.personal-summary-card,
+.mydaily-stat-card,
+.file-library-panel,
+.qv-card {
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.personal-summary-card:hover,
+.mydaily-stat-card:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 680px) {
+  html,
+  body,
+  #root {
+    height: auto;
+    min-height: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  #root,
+  .app-shell {
+    height: auto;
+    min-height: 100vh !important;
+    overflow: visible;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .sidebar {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .main-content {
+    width: 100%;
+    height: auto;
+    min-height: 0 !important;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .main-content > .topbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .mydaily-page,
+  .deadlines-page,
+  .personal-page,
+  .calendar-page,
+  .spendnote-page {
+    padding-top: 25px;
+  }
+
+  .mydaily-heading {
+    min-height: 0;
+    align-items: flex-start;
+  }
+}

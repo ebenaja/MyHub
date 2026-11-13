@@ -1,0 +1,412 @@
+/* MyDaily module styles - scoped so the existing Dashboard styling stays intact. */
+.mydaily-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 34px 46px 42px;
+  box-sizing: border-box;
+}
+
+.mydaily-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.mydaily-heading h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.mydaily-heading h1 span {
+  color: #5b7cff;
+}
+
+.mydaily-heading p {
+  margin: 0;
+  color: #8795b3;
+  font-size: 14px;
+}
+
+.mydaily-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.mydaily-stat-card {
+  display: flex;
+  min-height: 132px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 22px;
+  border: 1px solid #e7eaf1;
+  border-radius: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.mydaily-stat-card span {
+  color: #8795b3;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mydaily-stat-card strong {
+  color: #19243b;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.mydaily-stat-card small {
+  color: #8795b3;
+  font-size: 11px;
+}
+
+.app-shell.dark .mydaily-stat-card {
+  border-color: #25324c;
+  background: #111b30;
+}
+
+.app-shell.dark .mydaily-stat-card strong {
+  color: #f0f4ff;
+}
+
+.mydaily-list-panel {
+  padding: 24px;
+  border-radius: 17px;
+}
+
+.app-shell.dark .mydaily-list-panel {
+  border-color: #25324c;
+  background: #111b30;
+}
+
+.mydaily-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.mydaily-list-heading h3 {
+  margin: 0 0 6px;
+  color: #1b2942;
+  font-size: 17px;
+}
+
+.mydaily-list-heading p {
+  margin: 0;
+  color: #8795b3;
+  font-size: 12px;
+}
+
+.app-shell.dark .mydaily-list-heading h3 {
+  color: #f0f4ff;
+}
+
+.mydaily-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid #e7eaf1;
+  border-radius: 11px;
+  background: #f7f8fc;
+}
+
+.mydaily-filter-group button {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: transparent;
+  color: #7583a0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mydaily-filter-group button.active {
+  background: #e8edff;
+  color: #4f70ef;
+}
+
+.app-shell.dark .mydaily-filter-group {
+  border-color: #293653;
+  background: #0d1629;
+}
+
+.app-shell.dark .mydaily-filter-group button.active {
+  background: #24345d;
+  color: #8da5ff;
+}
+
+.mydaily-task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mydaily-task-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+  padding: 12px 2px;
+  border-top: 1px solid #e9edf4;
+}
+
+.app-shell.dark .mydaily-task-row {
+  border-top-color: #25324c;
+}
+
+.mydaily-task-check {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  place-items: center;
+  border: 1.5px solid #a9b5cb;
+  border-radius: 7px;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.mydaily-task-check.checked {
+  border-color: #0da77b;
+  background: #0da77b;
+}
+
+.mydaily-task-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.mydaily-task-copy > strong {
+  overflow: hidden;
+  color: #1b2942;
+  font-size: 13px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-shell.dark .mydaily-task-copy > strong {
+  color: #edf2ff;
+}
+
+.mydaily-task-copy > strong.completed-title {
+  color: #8a96ad;
+  text-decoration: line-through;
+}
+
+.mydaily-task-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  color: #8996af;
+  font-size: 11px;
+}
+
+.mydaily-task-meta > span:not(:last-child)::after {
+  content: "";
+}
+
+.mydaily-priority {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.mydaily-priority.priority-low {
+  background: #e7f7f0;
+  color: #16845f;
+}
+
+.mydaily-priority.priority-medium {
+  background: #fff4df;
+  color: #a66a12;
+}
+
+.mydaily-priority.priority-high {
+  background: #ffebeb;
+  color: #c14b55;
+}
+
+.mydaily-task-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.mydaily-action-button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid #e3e8f1;
+  border-radius: 9px;
+  background: transparent;
+  color: #7f8daa;
+  cursor: pointer;
+}
+
+.mydaily-action-button:hover {
+  border-color: #8ba1ff;
+  color: #5877f3;
+}
+
+.mydaily-action-button.delete:hover {
+  border-color: #f1a3a8;
+  color: #d04e59;
+}
+
+.app-shell.dark .mydaily-action-button {
+  border-color: #2b3854;
+  color: #a0acc4;
+}
+
+.mydaily-empty {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 26px;
+  color: #8996af;
+  text-align: center;
+}
+
+.mydaily-empty strong {
+  color: #273550;
+  font-size: 14px;
+}
+
+.app-shell.dark .mydaily-empty strong {
+  color: #edf2ff;
+}
+
+.mydaily-empty p {
+  max-width: 420px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.mydaily-empty-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 15px;
+  background: #edf1ff;
+  color: #5b7cff;
+}
+
+.app-shell.dark .mydaily-empty-icon {
+  background: #202e50;
+}
+
+.mydaily-error {
+  margin: 0 0 14px;
+  border: 1px solid #f1b6bb;
+  border-radius: 9px;
+  padding: 10px 12px;
+  background: #fff1f2;
+  color: #b83d49;
+  font-size: 12px;
+}
+
+.mydaily-modal-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.mydaily-modal-fields > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.mydaily-modal-fields select {
+  width: 100%;
+  min-height: 42px;
+  box-sizing: border-box;
+  border: 1px solid #dfe5f0;
+  border-radius: 9px;
+  padding: 0 11px;
+  background: #ffffff;
+  color: #273550;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+.app-shell.dark .mydaily-modal-fields select {
+  border-color: #34415d;
+  background: #111b30;
+  color: #edf2ff;
+}
+
+@media (max-width: 1100px) {
+  .mydaily-page {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+
+  .mydaily-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .mydaily-page {
+    padding: 24px 18px 32px;
+  }
+
+  .mydaily-heading,
+  .mydaily-list-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .mydaily-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .mydaily-stat-card {
+    min-height: 116px;
+    padding: 15px;
+  }
+
+  .mydaily-list-panel {
+    padding: 16px;
+  }
+
+  .mydaily-task-row {
+    gap: 9px;
+  }
+
+  .mydaily-modal-fields {
+    grid-template-columns: 1fr;
+  }
+}
